@@ -1420,7 +1420,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<Material, AiMaterial>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>

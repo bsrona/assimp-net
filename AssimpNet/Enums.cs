@@ -452,7 +452,11 @@ namespace Assimp
         /// <para>Usage of the configuration AI_CONFIG_PP_DB_THRESHOLD to control the threshold and AI_CONFIG_PP_DB_ALL_OR_NONE if you want bones
         /// removed if and only if all bones within the scene qualify for removal.</para>
         /// </summary>
-        Debone = 0x4000000
+        Debone = 0x4000000,
+        GlobalScale = 0x8000000,
+        EmbedTextures = 0x10000000,
+        ForceGenNormals = 0x20000000,
+        DropNormals = 0x40000000,
     }
 
     /// <summary>
@@ -1202,4 +1206,20 @@ namespace Assimp
         /// </summary>
         ReadText = 5
     }
+
+    public enum MorphingMethod : int
+    {
+        /** Morphing method to be determined */
+        UNKNOWN = 0x0,
+
+        /** Interpolation between morph targets */
+        VERTEX_BLEND = 0x1,
+
+        /** Normalized morphing between morph targets  */
+        MORPH_NORMALIZED = 0x2,
+
+        /** Relative morphing between morph targets  */
+        MORPH_RELATIVE = 0x3,
+    }; //! enum aiMorphingMethod
+
 }

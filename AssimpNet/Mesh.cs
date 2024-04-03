@@ -44,6 +44,9 @@ namespace Assimp
         private int[] m_texComponentCount;
         private List<Bone> m_bones;
         private List<MeshAnimationAttachment> m_meshAttachments;
+        private MorphingMethod m_Method;
+        private AABB m_AABB;
+        private string[] m_TextureCoordsNames;
 
         /// <summary>
         /// Gets or sets the mesh name. This tends to be used
@@ -129,6 +132,11 @@ namespace Assimp
             {
                 return m_vertices;
             }
+
+            set
+            {
+                m_vertices = value;
+            }
         }
 
         /// <summary>
@@ -150,6 +158,11 @@ namespace Assimp
             get
             {
                 return m_normals;
+            }
+
+            set
+            {
+                m_normals = value;
             }
         }
 
@@ -174,6 +187,11 @@ namespace Assimp
             {
                 return m_tangents;
             }
+
+            set
+            {
+                m_tangents = value;
+            }
         }
 
         /// <summary>
@@ -184,6 +202,11 @@ namespace Assimp
             get
             {
                 return m_bitangents;
+            }
+
+            set
+            {
+                m_bitangents = value;
             }
         }
 
@@ -219,6 +242,11 @@ namespace Assimp
             get
             {
                 return m_faces;
+            }
+
+            set
+            {
+                m_faces = value;
             }
         }
 
@@ -272,6 +300,11 @@ namespace Assimp
             {
                 return m_colors;
             }
+
+            set
+            {
+                m_colors = value;
+            }
         }
 
         /// <summary>
@@ -283,6 +316,11 @@ namespace Assimp
             get
             {
                 return m_texCoords;
+            }
+
+            set
+            {
+                m_texCoords = value;
             }
         }
 
@@ -330,6 +368,11 @@ namespace Assimp
             {
                 return m_bones;
             }
+
+            set
+            {
+                m_bones = value;
+            }
         }
 
         /// <summary>
@@ -362,6 +405,11 @@ namespace Assimp
             get
             {
                 return m_meshAttachments;
+            }
+
+            set
+            {
+                m_meshAttachments = value;
             }
         }
 
@@ -415,6 +463,7 @@ namespace Assimp
             m_bones = new List<Bone>();
             m_faces = new List<Face>();
             m_meshAttachments = new List<MeshAnimationAttachment>();
+            m_Method = MorphingMethod.UNKNOWN;
         }
 
         /// <summary>
@@ -613,7 +662,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<Mesh, AiMesh>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>
@@ -640,6 +689,9 @@ namespace Assimp
             nativeValue.NumBones = (uint) BoneCount;
             nativeValue.NumFaces = (uint) FaceCount;
             nativeValue.NumAnimMeshes = (uint) MeshAnimationAttachmentCount;
+            nativeValue.MorphingMethods = m_Method;
+            nativeValue.Aabb = m_AABB;
+            nativeValue.TextureCoordsNames = IntPtr.Zero;
 
             if(nativeValue.NumVertices > 0)
             {

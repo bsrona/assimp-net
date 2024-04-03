@@ -233,7 +233,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<Camera, AiCamera>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>

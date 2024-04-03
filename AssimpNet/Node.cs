@@ -77,6 +77,11 @@ namespace Assimp
             {
                 return m_parent;
             }
+
+            set
+            {
+                m_parent = value;
+            }
         }
 
         /// <summary>
@@ -109,6 +114,11 @@ namespace Assimp
             get
             {
                 return m_children;
+            }
+
+            set
+            {
+                m_children = value;
             }
         }
 
@@ -145,6 +155,11 @@ namespace Assimp
             {
                 return m_meshes;
             }
+
+            set
+            {
+                m_meshes = value;
+            }
         }
 
         /// <summary>
@@ -155,6 +170,11 @@ namespace Assimp
             get
             {
                 return m_metaData;
+            }
+
+            set
+            {
+                m_metaData = value;
             }
         }
 
@@ -291,7 +311,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<Node, AiNode>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>
@@ -313,7 +333,7 @@ namespace Assimp
             if(m_metaData.Count > 0)
                 nativeValue.MetaData = MemoryHelper.ToNativePointer<Metadata, AiMetadata>(m_metaData);
 
-            if(nativeValue.NumMeshes > 0)
+            if(m_meshes.Count > 0)
                 nativeValue.Meshes = MemoryHelper.ToNativeArray<int>(m_meshes.ToArray());
 
             //Now descend through the children

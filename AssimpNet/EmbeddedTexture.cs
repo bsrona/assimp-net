@@ -213,7 +213,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<EmbeddedTexture, AiTexture>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>

@@ -46,7 +46,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<Metadata, AiMetadata>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>

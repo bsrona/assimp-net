@@ -107,6 +107,11 @@ namespace Assimp
             {
                 return m_meshes;
             }
+
+            set
+            {
+                m_meshes = value;
+            }
         }
 
 
@@ -141,6 +146,11 @@ namespace Assimp
             {
                 return m_lights;
             }
+
+            set
+            {
+                m_lights = value;
+            }
         }
 
         /// <summary>
@@ -172,6 +182,11 @@ namespace Assimp
             get
             {
                 return m_cameras;
+            }
+
+            set
+            {
+                m_cameras = value;
             }
         }
 
@@ -206,6 +221,11 @@ namespace Assimp
             {
                 return m_textures;
             }
+
+            set
+            {
+                m_textures = value;
+            }
         }
 
         /// <summary>
@@ -238,6 +258,11 @@ namespace Assimp
             get
             {
                 return m_animations;
+            }
+
+            set
+            {
+                m_animations = value;
             }
         }
 
@@ -273,6 +298,11 @@ namespace Assimp
             get
             {
                 return m_materials;
+            }
+
+            set
+            {
+                m_materials = value;
             }
         }
 
@@ -352,7 +382,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<Scene, AiScene>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>

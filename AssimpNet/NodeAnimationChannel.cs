@@ -219,7 +219,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<NodeAnimationChannel, AiNodeAnim>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>

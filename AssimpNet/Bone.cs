@@ -34,6 +34,8 @@ namespace Assimp
     public sealed class Bone : IMarshalable<Bone, AiBone>
     {
         private String m_name;
+        private Node m_Armature;
+        private Node m_Node;
         private List<VertexWeight> m_weights;
         private Matrix4x4 m_offsetMatrix;
 
@@ -49,6 +51,28 @@ namespace Assimp
             set
             {
                 m_name = value;
+            }
+        }
+        public Node Armature
+        {
+            get
+            {
+                return m_Armature;
+            }
+            set
+            {
+                m_Armature = value;
+            }
+        }
+        public Node Node
+        {
+            get
+            {
+                return m_Node;
+            }
+            set
+            {
+                m_Node = value;
             }
         }
 
@@ -133,7 +157,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<Bone, AiBone>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>
@@ -144,11 +168,19 @@ namespace Assimp
         void IMarshalable<Bone, AiBone>.ToNative(IntPtr thisPtr, out AiBone nativeValue)
         {
             nativeValue.Name = new AiString(m_name);
+            nativeValue.Armature = IntPtr.Zero;
+            nativeValue.Node = IntPtr.Zero;
             nativeValue.OffsetMatrix = m_offsetMatrix;
             nativeValue.NumWeights = (uint) m_weights.Count;
             nativeValue.Weights = IntPtr.Zero;
 
-            if(nativeValue.NumWeights > 0)
+            if (m_Armature != null)
+                nativeValue.Armature = MemoryHelper.ToNativePointer<Node, AiNode>(m_Armature);
+
+            if (m_Node != null)
+                nativeValue.Node = MemoryHelper.ToNativePointer<Node, AiNode>(m_Node);
+
+            if (nativeValue.NumWeights > 0)
                 nativeValue.Weights = MemoryHelper.ToNativeArray<VertexWeight>(m_weights.ToArray());
         }
 
@@ -159,6 +191,13 @@ namespace Assimp
         void IMarshalable<Bone, AiBone>.FromNative(ref AiBone nativeValue)
         {
             m_name = nativeValue.Name.GetString();
+
+            if (nativeValue.Armature != IntPtr.Zero)
+                m_Armature = MemoryHelper.FromNativePointer<Node, AiNode>(nativeValue.Armature);
+
+            if (nativeValue.Node != IntPtr.Zero)
+                m_Node = MemoryHelper.FromNativePointer<Node, AiNode>(nativeValue.Node);
+
             m_offsetMatrix = nativeValue.OffsetMatrix;
             m_weights.Clear();
 

@@ -147,7 +147,7 @@ namespace Assimp {
         /// Gets if the native value type is blittable (that is, does not require marshaling by the runtime, e.g. has MarshalAs attributes).
         /// </summary>
         bool IMarshalable<Animation, AiAnimation>.IsNativeBlittable {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>

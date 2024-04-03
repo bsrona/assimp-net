@@ -293,7 +293,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<Light, AiLight>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>

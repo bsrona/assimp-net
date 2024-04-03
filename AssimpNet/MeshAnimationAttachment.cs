@@ -306,7 +306,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<MeshAnimationAttachment, AiAnimMesh>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>

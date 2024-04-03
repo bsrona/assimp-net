@@ -70,6 +70,11 @@ namespace Assimp
             {
                 return m_indices;
             }
+
+            set
+            {
+                m_indices = value;
+            }
         }
 
         /// <summary>
@@ -99,7 +104,7 @@ namespace Assimp
         /// </summary>
         bool IMarshalable<Face, AiFace>.IsNativeBlittable
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>
