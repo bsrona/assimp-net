@@ -101,6 +101,9 @@ namespace Assimp {
             get {
                 return m_nodeChannels;
             }
+            set {
+                m_nodeChannels = value;
+            }
         }
 
         /// <summary>

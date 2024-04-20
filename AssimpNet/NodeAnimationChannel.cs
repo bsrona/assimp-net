@@ -94,6 +94,11 @@ namespace Assimp
             {
                 return m_positionKeys;
             }
+
+            set
+            {
+                m_positionKeys = value;
+            }
         }
 
         /// <summary>
@@ -129,6 +134,11 @@ namespace Assimp
             {
                 return m_rotationKeys;
             }
+
+            set
+            {
+                m_rotationKeys = value;
+            }
         }
 
         /// <summary>
@@ -163,6 +173,11 @@ namespace Assimp
             get
             {
                 return m_scalingKeys;
+            }
+
+            set
+            {
+                m_scalingKeys = value;
             }
         }
 

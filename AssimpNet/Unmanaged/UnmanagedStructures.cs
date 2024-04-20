@@ -108,6 +108,10 @@ namespace Assimp.Unmanaged
         /// </summary>
         public IntPtr MetaData;
 
+        public AiString Name;
+        public uint NumSkeletons;
+        public IntPtr Skeletons;
+
         /// <summary>
         /// void*, Private data do not touch!
         /// </summary>
